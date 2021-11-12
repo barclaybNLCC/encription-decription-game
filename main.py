@@ -1,4 +1,9 @@
-#An actor in our scenario()
+from cryptography.hazmat.backends import default_backend
+from cryptography.hazmat.primitives.asymmetric import rsa
+
+print("test")
+
+#An actor in our scenario
 class Actor():
   def __init__(self, privateKey, publicKey):
     self.privateKey=privateKey
@@ -32,3 +37,17 @@ class Message():
 Alice=Actor("","")
 Bob=Actor("","")
 Chuck=Actor("","")
+
+print("hello world")
+private_key = rsa.generate_private_key(
+    public_exponent=65537,
+    key_size=2048,
+    backend=default_backend()
+)
+
+public_key = private_key.public_key()
+
+print(private_key)
+print(public_key)
+print(dir(public_key))
+print("hello world")

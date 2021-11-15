@@ -1,8 +1,15 @@
 #this is ben's branch
 
-
+ALPHABET = 'abcdefghijklmnopqrstuvwxyz.,?:1234567890' 
+file=''
+aliceTargetMailBox=''
+bobTargetMailBox=''
+chuckTargetMailBox=''
+sheet=''
+plaintext=''
 #An actor in our scenario()
 class Actor():
+  plaintext=''
   def __init__(self, privateKey, publicKey):
     self.privateKey=privateKey
     self.publicKey=publicKey
@@ -12,7 +19,7 @@ class Actor():
   #send a message to another actor
   #put/use encrypt in the send function
   def send(self, Actor):
-    
+    ciphertext = ''
     file.append(ciphertext)
     
     if Actor==Alice:
@@ -30,17 +37,16 @@ class Actor():
              #!!!!!open dm's needs to be made as a new function!!!!!
     
   
-  ALPHABET = 'abcdefghijklmnopqrstuvwxyz.,?:1234567890' 
-
+ 
   def get_plaintext():
     plaintext = input('Please type your message ')
     return plaintext.lower()  
 
   #encrypt the plaintext of the message, using a keyphrase
-  def encrpyt(keyphrase):
-    ciphertext = ''
-    for position, character in enumerate(plaintext):
+  def encrpyt(self, keyphrase):
+    for position, character in enumerate(self.plaintext):
       if character not in ALPHABET:
+        ciphertext = ''
         ciphertext += character
       else:
             encrypted = (ALPHABET.index(character) + enumerate(keyphrase))
@@ -49,18 +55,10 @@ class Actor():
     #ethan 
 
 
-
-
-    ALPHABET = 'abcdefghijklmnopqrstuvwxyz'
-
-  def get_plaintext():
-    plaintext = input('Please type your message ')
-    return plaintext.lower()  
-
   
   #decrypt the ciphertext 
   def decrypt(message,keyphrase):
-      ciphertext = ''
+    ciphertext = ''
     for position, character in enumerate(plaintext):
       if character not in ALPHABET:
         ciphertext += character

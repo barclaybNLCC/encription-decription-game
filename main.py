@@ -1,14 +1,9 @@
+print("line1")
 #this is ben's branch
 
 ALPHABET = 'abcdefghijklmnopqrstuvwxyz.,?:1234567890' 
-file=''
-aliceTargetMailBox=''
-bobTargetMailBox=''
-chuckTargetMailBox=''
-sheet=''
-plaintext=''
-#An actor in our scenario()
 class Actor():
+  ciphertext = ''
   plaintext=''
   def __init__(self, privateKey, publicKey):
     self.privateKey=privateKey
@@ -19,8 +14,7 @@ class Actor():
   #send a message to another actor
   #put/use encrypt in the send function
   def send(self, Actor):
-    ciphertext = ''
-    file.append(ciphertext)
+    file.append(self.ciphertext)
     
     if Actor==Alice:
       aliceTargetMailBox.append(file)
@@ -34,8 +28,7 @@ class Actor():
 
 
 
-             #!!!!!open dm's needs to be made as a new function!!!!!
-    
+             #!!!!!open dm's needs to be made as a new function!!!!!  
   
  
   def get_plaintext():
@@ -46,26 +39,23 @@ class Actor():
   def encrpyt(self, keyphrase):
     for position, character in enumerate(self.plaintext):
       if character not in ALPHABET:
-        ciphertext = ''
-        ciphertext += character
+        self.ciphertext += character
       else:
             encrypted = (ALPHABET.index(character) + enumerate(keyphrase))
-            ciphertext += ALPHABET[encrypted]
-    return ciphertext
+            self.ciphertext += ALPHABET[encrypted]
+    return self.ciphertext
     #ethan 
-
 
   
   #decrypt the ciphertext 
-  def decrypt(message,keyphrase):
-    ciphertext = ''
-    for position, character in enumerate(plaintext):
+  def decrypt(self, message,keyphrase):
+    for position, character in enumerate(self.plaintext):
       if character not in ALPHABET:
-        ciphertext += character
+        self.ciphertext += character
       else:
             encrypted = (ALPHABET.index(character) + int(sheet[position])) % 40
-            ciphertext += ALPHABET[encrypted]
-    return ciphertext
+            self.ciphertext += ALPHABET[encrypted]
+    return self.ciphertext
     #elisha
  
  #A message that can be sent by Actors

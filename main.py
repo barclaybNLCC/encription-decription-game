@@ -13,27 +13,22 @@ class Actor():
   
   #send a message to another actor
   #put/use encrypt in the send function
-  def send(self, Actor):
-    file.append(self.ciphertext)
-    
-    if Actor==Alice:
-      aliceTargetMailBox.append(file)
-    elif Actor==Bob:
-      bobTargetMailBox.append(file)
-    elif Actor==Chuck:
-      chuckTargetMailBox.append(file)
-    else:
-      print("Something went wrong...try again later")
-    #ben
-
-
-
-             #!!!!!open dm's needs to be made as a new function!!!!!  
-  
  
+  def send():
+   #send a message to another actor
+   #put/use encrypt in the send function
+   def sendClearText(self, actor, message):
+      actor.messageBox.append(message)
+
+   def sendEncryptedText(self, actor, message, key):
+     #ciphertext=encrypt(message,key)
+     #actor.messageBox.append(ciphertext)
+     pass
+
+     
   def get_plaintext():
-    plaintext = input('Please type your message ')
-    return plaintext.lower()  
+   plaintext = input('Please type your message ')
+   return plaintext.lower()  
 
   #encrypt the plaintext of the message, using a keyphrase
   def encrpyt(self, keyphrase):
@@ -53,7 +48,7 @@ class Actor():
       if character not in ALPHABET:
         self.ciphertext += character
       else:
-            encrypted = (ALPHABET.index(character) + int(sheet[position])) % 40
+            encrypted = (ALPHABET.index(character) + int(self.sheet[position])) % 40
             self.ciphertext += ALPHABET[encrypted]
     return self.ciphertext
     #elisha

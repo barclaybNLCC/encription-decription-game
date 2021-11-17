@@ -1,6 +1,6 @@
-print("line1")
-#this is ben's branch
 
+#this is ben's branch
+# first thing it should do is tutorial then ask for a prompt
 ALPHABET = 'abcdefghijklmnopqrstuvwxyz.,?:1234567890' 
 class Actor():
   ciphertext = ''
@@ -25,20 +25,18 @@ class Actor():
      #actor.messageBox.append(ciphertext)
      pass
 
-     
+  def typeMessage(self):
+    text=input("kaghdrkgrkaeswfn\n")
+    message=text.split
+    
+
+
   def get_plaintext():
-   plaintext = input('Please type your message ')
+   plaintext = input('Please type your message\n')
    return plaintext.lower()  
+   pass
 
   #encrypt the plaintext of the message, using a keyphrase
-  def encrpyt(self, keyphrase):
-    for position, character in enumerate(self.plaintext):
-      if character not in ALPHABET:
-        self.ciphertext += character
-      else:
-            encrypted = (ALPHABET.index(character) + enumerate(keyphrase))
-            self.ciphertext += ALPHABET[encrypted]
-    return self.ciphertext
     #ethan 
 
   
@@ -67,3 +65,4 @@ class Message():
 Alice=Actor("","")
 Bob=Actor("","")
 Chuck=Actor("","")
+Alice.typeMessage()

@@ -29,29 +29,54 @@ class Actor():
 
              #!!!!!open dm's needs to be made as a new function!!!!!
     
-  
-  ALPHABET = 'abcdefghijklmnopqrstuvwxyz.,?:1234567890' 
+def modularInv(a,b):
+  gcd, x, y = egcd(a, b)
 
-  def get_plaintext():
-    plaintext = input('Please type your message ')
-    return plaintext.lower()  
+  if x<0:
+    x+=m
+  return x
 
-  #encrypt the plaintext of the message, using a keyphrase
-  def encrpyt(keyphrase):
-    ciphertext = ''
-    for position, character in enumerate(plaintext):
-      if character not in ALPHABET:
-        ciphertext += character
-      else:
-            encrypted = (ALPHABET.index(character) + enumerate(keyphrase))
-            ciphertext += ALPHABET[encrypted]
-    return ciphertext
-    #ethan 
+def encrypt(PublicKey, RSAMod, msg):
+  cipher=""
 
+  for c in msg:
+    m=ord(c)
+    cipher+=str(pow(m, PublicKey, RSAMod)) +" "
+  return cipher
 
+def decrypt(PrivateKey, RSAMod, cipher):
+  msg=""
 
+  parts = cipher.split()
+  for part in parts:
+    if part:
+      c = int(part)
+      msg+=chr(pow(c, PrivateKey, RSAMod))
 
-    ALPHABET = 'abcdefghijklmnopqrstuvwxyz'
+  return msg
+
+def main():
+  p=11
+  q=13
+  #RSA Modulous
+  RSAMod=p*q
+  phiN=(p-1)*(q-1)
+
+  PublicKey=13
+  PrivateKey=modularInv(PublicKey,phiN)
+
+  msg="This is a secret message."
+
+  encrypted=encrypt(PublicKey, RSAMod, msg)
+  decrypted=decrypt(PrivateKey, RSAMod, encrypted)
+
+  print(f"Message: {msg}")
+  print(f"PublicKey: {PublicKey}")
+  print(f"PrivateKey: {PrivateKey}")
+  print(f"RSAMod: {RSAMod}")
+  print(f"enc: {encrypted}")
+  print(f"dec: {decrypted}")
+main()
 
   def get_plaintext():
     plaintext = input('Please type your message ')

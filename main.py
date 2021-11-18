@@ -1,7 +1,3 @@
-#type
-if typing is True:
-  print("What would you like to say?")
-  answer=input("\n")
 #que
 que=[]
 l2 = []

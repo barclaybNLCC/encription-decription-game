@@ -6,6 +6,9 @@ def que(server):
  else:
    que.append(server)
 
+#open message box
+def
+
 #send
 def send():
   server.append(str(cipher)

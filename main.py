@@ -1,16 +1,15 @@
 #que
-que=[]
-server = []
-if not server:
+def que(server):
+ server = []
+ if not server:
     pass
-else:que.append(server)
+ else:
+   server.append(cipher)
+   que.append(server)
 
 #send
-def send(reciever, cipher):
-  server.append(cipher)
-  cipher = cipher.pop(0)
-  reciever.append(server)
-  server = server.pop(0)
+def send():
+  
 
 #delete
 def delete(reciever):

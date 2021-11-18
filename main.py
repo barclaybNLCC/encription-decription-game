@@ -4,12 +4,13 @@ def que(server):
  if not server:
     pass
  else:
-   server.append(cipher)
    que.append(server)
 
 #send
 def send():
-  
+  server.append(str(cipher)
+  cipher = cipher.pop(0)
+
 
 #delete
 def delete(reciever):

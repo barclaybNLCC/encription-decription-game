@@ -1,13 +1,12 @@
+#que
+que=[]
+def queue():
+  que.append(msg)
+  msg.pop(0)
+
 #open message box
 def openMessageBox():
-  print(cipher)
-
-
-#send
-def send():
-  server.append(str(cipher)
-  cipher = cipher.pop(0)
-
+  print(que)
 
 #delete
 def delete(reciever):

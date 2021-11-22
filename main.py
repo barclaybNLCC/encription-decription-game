@@ -21,7 +21,7 @@ class bcolors:
     BOLD = '\033[1m'
     UNDERLINE = '\033[4m'
     OKRED = '\033[31m'
-    purple = '\033[106m'
+    purple = '\033[35m'
 messages=[]
 actors = []
 
@@ -31,11 +31,12 @@ class Message:
 
 class Actor():
 
-  def __init__(self, name):
+  def __init__(self, name,e,d,N):
     self.name=name
     self.generateKeys()
-    self.publicKey="TODO implement public key gen"
-    self.privateKey="TODO implemetn private key gen"
+    self.publicKey=e
+    self.privateKey=d
+    self.N=N
 
   def encrypt(e, N, msg):
     cipher=""
@@ -178,15 +179,16 @@ while running:
   _input = input(bcolors.BOLD +"Enter the number of your selection"+bcolors.ENDC+"\n")
 
   if _input == "1":
-    print(bcolors.purple ('hello', 'bold')br)
-    print(bcolors.BOLD + bcolors.purple + "test" + bcolors.ENDC)
-    name=input(bcolors.BOLD  + boclors.purple + "Enter your name\n" + bcolors.ENDC)
+    print(bcolors.purple + 'hello' + 'bold' + bcolors.BOLD)
+    print(bcolors.BOLD + bcolors.purple +  + bcolors.ENDC)
+    name=input(bcolors.BOLD + bcolors.purple + "Enter your name\n" + bcolors.ENDC)
     if name in [""," "]:
       print("Please enter a name\n")
     else:
-      player = Actor(name)
+
       print(bcolors.OKGREEN+"Generating Keys..."+ bcolors.ENDC + "\n")
       e,d,N=player.generateKeys(10)
+      player = Actor(name,e,d,N)
       print("Public Key: " + str(player.publicKey))
       print("Public Key: " + str(player.privateKey))
 
@@ -206,7 +208,7 @@ while running:
 
 
 
-      encrypt(e, N, msg)
+      cipher=encrypt(e, N, msg)
 
       keySelection = input("Enter your encryption key:\n")
       

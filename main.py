@@ -1,11 +1,3 @@
-#que
-def que(server):
- server = []
- if not server:
-    pass
- else:
-   que.append(server)
-
 #open message box
 def openMessageBox():
   print(cipher)

@@ -4,6 +4,12 @@ import random
 
 
 
+
+
+
+
+
+
 class bcolors:
     HEADER = '\033[95m'
     OKBLUE = '\033[94m'
@@ -15,7 +21,7 @@ class bcolors:
     BOLD = '\033[1m'
     UNDERLINE = '\033[4m'
     OKRED = '\033[31m'
-    purple = '\033[m'
+    purple = '\033[106m'
 messages=[]
 actors = []
 
@@ -50,7 +56,7 @@ class Actor():
 
     return msg
 
-  def rabinMiller(n,c):
+  def rabinMiller(self, n,c):
     global d
     a=random.randint(2,(n-2)-2)
     x=pow(a,d,n)
@@ -150,8 +156,10 @@ class Actor():
     if x<0:
       x+=b
     return x
-
-    
+  que=[]
+  def queue():
+   que.append(msg)
+   msg.pop(0) 
     
 
 
@@ -170,16 +178,15 @@ while running:
   _input = input(bcolors.BOLD +"Enter the number of your selection"+bcolors.ENDC+"\n")
 
   if _input == "1":
-    from simple_colors import *
-    print(purple('hello', 'bold'))
-    print(purple '\033[106m' + '' +  BOLD'\033[1m')
-    name=input(bcolors.BOLD  + "Enter your name\n" + bcolors.ENDC)
+    print(bcolors.purple ('hello', 'bold')br)
+    print(bcolors.BOLD + bcolors.purple + "test" + bcolors.ENDC)
+    name=input(bcolors.BOLD  + boclors.purple + "Enter your name\n" + bcolors.ENDC)
     if name in [""," "]:
       print("Please enter a name\n")
     else:
       player = Actor(name)
       print(bcolors.OKGREEN+"Generating Keys..."+ bcolors.ENDC + "\n")
-      player.generateKeys()
+      e,d,N=player.generateKeys(10)
       print("Public Key: " + str(player.publicKey))
       print("Public Key: " + str(player.privateKey))
 
@@ -195,10 +202,12 @@ while running:
       print(bcolors.OKRED+ "You must first create your public and private keys" + bcolors.ENDC + "\n")
     else:
 
-      cleartext=input("Enter your message:\n")
+      msg=input("Enter your message:\n")
 
-      #for actor in enumerate(activeActor):
-        
+
+
+      encrypt(e, N, msg)
+
       keySelection = input("Enter your encryption key:\n")
       
       player.createMessage()

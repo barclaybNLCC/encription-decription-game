@@ -179,8 +179,7 @@ while running:
   _input = input(bcolors.BOLD +"Enter the number of your selection"+bcolors.ENDC+"\n")
 
   if _input == "1":
-    print(bcolors.purple + 'hello' + 'bold' + bcolors.BOLD)
-    print(bcolors.BOLD + bcolors.purple +  + bcolors.ENDC)
+    print(bcolors.BOLD + bcolors.purple + bcolors.ENDC)
     name=input(bcolors.BOLD + bcolors.purple + "Enter your name\n" + bcolors.ENDC)
     if name in [""," "]:
       print("Please enter a name\n")

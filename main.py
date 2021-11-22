@@ -7,7 +7,8 @@ def que(server):
    que.append(server)
 
 #open message box
-def
+def openMessageBox():
+  print(message)
 
 #send
 def send():

@@ -8,7 +8,8 @@ def que(server):
 
 #open message box
 def openMessageBox():
-  print(message)
+  print(cipher)
+
 
 #send
 def send():
@@ -18,7 +19,7 @@ def send():
 
 #delete
 def delete(reciever):
- print("If you would like to go to the home screen then type 0 and press enter")
+ print("If you would like to go to the home screen then type \"0\" and press enter")
  answer=input("Would you like to send a message?Y/N\n")
  if answer=="Y":
    reciever.pop(0)

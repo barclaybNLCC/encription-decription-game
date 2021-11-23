@@ -22,7 +22,7 @@ class bcolors:
     UNDERLINE = '\033[4m'
     OKRED = '\033[31m'
     purple = '\033[35m'
-    pink = '\033[153m'
+    pink = '\033[33m'
 messages=[]
 actors = []
 
@@ -32,14 +32,14 @@ class Message:
 
 class Actor():
 
-  def __init__(self, name,e,d,N):
+  def __init__(self, name):
     self.name=name
-    self.generateKeys()
+    e,d,N = self.generateKeys(10)
     self.publicKey=e
     self.privateKey=d
     self.N=N
 
-  def encrypt(e, N, msg):
+  def encrypt(self,e, N, msg):
     cipher=""
 
     for c in msg:
@@ -47,7 +47,7 @@ class Actor():
       cipher+=str(pow(m, e, N)) +" "
     return cipher
 
-  def decrypt(d, N, cipher):
+  def decrypt(self,d, N, cipher):
     msg=""
 
     parts = cipher.split()
@@ -132,12 +132,12 @@ class Actor():
   def isCoPrime(self, p,q):
     return self.gcd(p,q)==1
 
-  def gcd(p,q):
+  def gcd(self,p,q):
     while q:
       p,q=q,p%q
     return p
 
-  def egcd(a,b):
+  def egcd(self,a,b):
     s=0; old_s=1
     t=1; old_t=0
     r=b; old_r=a
@@ -177,20 +177,19 @@ while running:
   print("3. Send Messages")
   print("4. Quit the Program\n")
  
-  _input = input(bcolors.BOLD + "Enter the number of your selection" + bcolors.ENDC + "\n")    
+  _input = input(bcolors.BOLD + bcolors.pink + "Enter the number of your selection" + bcolors.ENDC + "\n")    
 
   if _input == "1":
     print(bcolors.BOLD + bcolors.purple + bcolors.ENDC)
-    name=input(bcolors.BOLD + bcolors.purple + "Enter your name\n" + bcolors.ENDC)
+    name=input(bcolors.BOLD + bcolors.purple + "Enter your name\n" + bcolors.purple)
     if name in [""," "]:
       print("Please enter a name\n")
     else:
 
       print(bcolors.OKGREEN+"Generating Keys..."+ bcolors.ENDC + "\n")
-      e,d,N=player.generateKeys(10)
-      player = Actor(name,e,d,N)
+      player = Actor(name)
       print("Public Key: " + str(player.publicKey))
-      print("Public Key: " + str(player.privateKey))
+      print("Private Key: " + str(player.privateKey))
 
   elif _input =="2": #view messages
     if type(player)!= type(Actor):
@@ -207,7 +206,7 @@ while running:
       _input=input("Enter your message:\n")
 
       msg=Message()
-      msg.cipherText=player.encrypt(e, N, _input)
+      msg.cipherText=player.encrypt(player.e, player.N, _input)
 
       keySelection = input("Enter your encryption key:\n")
       

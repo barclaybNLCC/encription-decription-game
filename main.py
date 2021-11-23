@@ -190,10 +190,11 @@ while running:
       print("Private Key: " + str(player.privateKey))
 
   elif _input =="2": #view messagesc
-    for message in enumerate(messages):
-      (ciphertext,plaintext)=message
-      print("cipher text:"+ str(ciphertext)
-      print("plain text: " + str(plaintext)
+    count=0
+    for message in messages:
+      print("Message #"+str(count))
+      print("cipher text:"+ str(message.cipherText))
+      print("plain text: " + str(message.clearText))
 
   elif _input =="3": #send msg
     #print("Player's private key:" + str(player.privateKey))
@@ -206,6 +207,7 @@ while running:
       _input=input("Enter your message:\n")
 
       msg=Message()
+      msg.plaintext=_input
       msg.cipherText=player.encrypt(player.publicKey, player.N, _input)
       messages.append(msg)
       #keySelection = input("Enter your encryption key( This number must be a prime number):\n")

@@ -191,12 +191,13 @@ while running:
 
   elif _input =="2": #view messagesc
     for message in enumerate(messages):
-      ciphertext,plaintext)=message
-      print(message.text)
+      (ciphertext,plaintext)=message
+      print("cipher text:"+ str(ciphertext)
+      print("plain text: " + str(plaintext)
 
   elif _input =="3": #send msg
-    print("Player's private key:" + str(player.privateKey))
-    print("Player's public key:" + str(player.publicKey))
+    #print("Player's private key:" + str(player.privateKey))
+    #print("Player's public key:" + str(player.publicKey))
     rx=input("Who are you sending this message to?")
     if rx != player.name:
       print(bcolors.OKRED+ "You must first create your public and private keys" + bcolors.ENDC + "\n")

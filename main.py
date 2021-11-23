@@ -103,8 +103,8 @@ class Actor():
       e=d=N=0
 
       #get prime numbers p & q
-      p=generateLargePrime(keysize)
-      q=generateLargePrime(keysize)
+      p=self.generateLargePrime(keysize)
+      q=self.generateLargePrime(keysize)
 
       N=p*q #RSA Modulous
       phiN=(p-1)*(q-1) #totient
@@ -113,12 +113,12 @@ class Actor():
       #e is coprime with phiN & 1<e<=phiN
       while True:
         e=random.randrange(2 ** (keysize-1), 2 ** keysize-1)
-        if(isCoPrime(e,phiN)):
+        if(self.isCoPrime(e,phiN)):
           break
 
       #choose d
       #d is mod inv of e with respect to phiN, e*d(mod phiN)=1
-      d=modularInv(e, phiN)
+      d=self.modularInv(e, phiN)
 
       return e,d,N  
 
@@ -128,8 +128,8 @@ class Actor():
       if (self.isPrime(num)):
         return num 
 
-  def isCoPrime(p,q):
-    return gcd(p,q)==1
+  def isCoPrime(self, p,q):
+    return self.gcd(p,q)==1
 
   def gcd(p,q):
     while q:
@@ -151,8 +151,8 @@ class Actor():
     return old_r, old_s, old_t
 
   #Calculate Modular Inverese
-  def modularInv(a,b):
-    gcd, x, y = egcd(a, b)
+  def modularInv(self,a,b):
+    gcd, x, y = self.egcd(a, b)
 
     if x<0:
       x+=b
@@ -206,8 +206,8 @@ while running:
       msg=input("Enter your message:\n")
 
 
-
-      cipher=encrypt(e, N, msg)
+      ciphertext=()
+      ciphertext=encrypt(e, N, msg)
 
       keySelection = input("Enter your encryption key:\n")
       

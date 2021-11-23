@@ -1,9 +1,7 @@
 import random
 
 
-
-
-
+#we may have the problem of people using the same name as each other or same as actors
 
 
 
@@ -22,10 +20,9 @@ class bcolors:
     UNDERLINE = '\033[4m'
     OKRED = '\033[31m'
     purple = '\033[35m'
-    pink = '\033[33m'
+    pink = '\033[207m'
 messages=[]
 actors = []
-
 class Message:
   cipherText=""
   clearText=""
@@ -170,13 +167,14 @@ class Actor():
 player=""#global access for our player 
 running=True
 while running:
-
+  
   print("What would you like to do?")
   print("1. Create public and private keys")
   print("2. View messages")
   print("3. Send Messages")
   print("4. Quit the Program\n")
- 
+  print(bcolors.BOLD + bcolors.pink + bcolors.ENDC)
+  
   _input = input(bcolors.BOLD + bcolors.pink + "Enter the number of your selection" + bcolors.ENDC + "\n")    
 
   if _input == "1":
@@ -191,15 +189,15 @@ while running:
       print("Public Key: " + str(player.publicKey))
       print("Private Key: " + str(player.privateKey))
 
-  elif _input =="2": #view messages
-    if type(player)!= type(Actor):
-      print(bcolors.WARNING + "You must first create your public and private keys" + bcolors.ENDC + "\n")
-    else:
-      for message in enumerate(messages):
-        print(message.text)
+  elif _input =="2": #view messagesc
+    for message in enumerate(messages):
+      print(message.text)
 
   elif _input =="3": #send msg
-    if type(player)!= type(Actor):
+    print(player.privateKey)
+    print(player.publicKey)
+    rx=input("Who are you sending this message to?")
+    if rx != player.name:
       print(bcolors.OKRED+ "You must first create your public and private keys" + bcolors.ENDC + "\n")
     else:
 

@@ -22,6 +22,7 @@ class bcolors:
     UNDERLINE = '\033[4m'
     OKRED = '\033[31m'
     purple = '\033[35m'
+    pink = '\033[153m'
 messages=[]
 actors = []
 
@@ -75,7 +76,7 @@ class Actor():
 
     return False
 
-  def isPrime(n):
+  def isPrime(self,n):
     if n<2:
       return False
     
@@ -158,8 +159,8 @@ class Actor():
       x+=b
     return x
   que=[]
-  def queue():
-   que.append(msg)
+  def queue(self):
+   self.que.append(msg)
    msg.pop(0) 
     
 
@@ -175,8 +176,8 @@ while running:
   print("2. View messages")
   print("3. Send Messages")
   print("4. Quit the Program\n")
-
-  _input = input(bcolors.BOLD +"Enter the number of your selection"+bcolors.ENDC+"\n")
+ 
+  _input = input(bcolors.BOLD + "Enter the number of your selection" + bcolors.ENDC + "\n")    
 
   if _input == "1":
     print(bcolors.BOLD + bcolors.purple + bcolors.ENDC)
@@ -203,11 +204,10 @@ while running:
       print(bcolors.OKRED+ "You must first create your public and private keys" + bcolors.ENDC + "\n")
     else:
 
-      msg=input("Enter your message:\n")
+      _input=input("Enter your message:\n")
 
-
-      ciphertext=()
-      ciphertext=encrypt(e, N, msg)
+      msg=Message()
+      msg.cipherText=player.encrypt(e, N, _input)
 
       keySelection = input("Enter your encryption key:\n")
       

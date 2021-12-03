@@ -1,13 +1,15 @@
 import random
+import os
 
 
 #we may have the problem of people using the same name as each other or same as actors
 
+# example
 
 
 
-
-
+def clear():
+  os.system('clear')
 class bcolors:
     HEADER = '\033[95m'
     OKBLUE = '\033[94m'
@@ -178,6 +180,7 @@ while running:
   _input = input(bcolors.BOLD + bcolors.pink + "Enter the number of your selection" + bcolors.ENDC + "\n")    
 
   if _input == "1":
+    clear()
     print(bcolors.BOLD + bcolors.purple + bcolors.ENDC)
     name=input(bcolors.BOLD + bcolors.purple + "Enter your name\n" + bcolors.purple)
     if name in [""," "]:
@@ -189,7 +192,8 @@ while running:
       print("Public Key: " + str(player.publicKey))
       print("Private Key: " + str(player.privateKey))
 
-  elif _input =="2": #view messagesc
+  elif _input =="2": #view messages
+    clear()
     count=0
     for message in messages:
       print("Message #"+str(count))
@@ -197,6 +201,7 @@ while running:
       print("plain text: " + str(message.clearText))
 
   elif _input =="3": #send msg
+    clear()
     #print("Player's private key:" + str(player.privateKey))
     #print("Player's public key:" + str(player.publicKey))
     rx=input("Who are you sending this message to?")
@@ -207,7 +212,7 @@ while running:
       _input=input("Enter your message:\n")
 
       msg=Message()
-      msg.plaintext=_input
+      msg.clearText=_input
       msg.cipherText=player.encrypt(player.publicKey, player.N, _input)
       messages.append(msg)
       #keySelection = input("Enter your encryption key( This number must be a prime number):\n")
@@ -215,4 +220,5 @@ while running:
       #player.createMessage()
 
   elif _input =="4":
+    clear()
     exit()
